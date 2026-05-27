@@ -151,4 +151,37 @@
 - Longer context windows require more memory (L² grows fast) and more computation.
 
 # From Scores to Attention Weights
--  Incomplete
+- Right now we have raw scores and don't seem to be meaningful
+- We need to convert these into proper attention weights
+
+## Step 1: Scale by √d_k
+0 scaled_scores = scores / √d_k
+
+## Step 2: Casual Masking
+- When predicting the next word, a position should only attend to itself and earlier positions - not future words it hasn't seen yet.
+- We enforce this by setting scores for future positions to -∞ before softmax. 
+- Since exp(-∞) = 0, these positions will get zero attention weight.
+![alt text](image.png)
+
+## Step 3: Softmax to get Weights
+- attention_weights = softmax(masked_scores, axis=-1)
+
+## The Complete Pipeline
+- scores = Q @ K.T                    # Raw alignment scores
+- scaled = scores / scale_factor       # Scale for stability
+- masked = scaled + causal_mask       # Hide future positions
+- attention_weights = softmax(masked) # Convert to weights
+
+# Values: What Attention Actually Mixes
+
+## We know how to get weights
+- We can now compute attention weights:
+    - Embedding -> query and key (via W_Q and W_K)
+    - Stack into Q and K matrices for the whole matrices
+    - Q x K ^ T -> score matrix
+    - Softmax across each row -> attention weights
+
+- SKipped
+
+
+# 

@@ -27,15 +27,14 @@ class Embedding:
 
 if __name__ == "__main__" :
 
-
-    # Create random embedding table [prior to training]
+    # RANDOM: Create random embedding table prior to training
     embedding_table = Embedding(vocab_size=4, embedding_dim=32)
 
     # Convert token ids to have embeddings
     embeddings = embedding_table.forward([1, 0])
 
-    print("\nEMBEDDINGS:")
-    print(embedding_table)
+    # print("\nEMBEDDINGS:")
+    # print(embedding_table)
 
-    print("\nSHAPE:")
-    print(embeddings)
+    # print("\nSHAPE:")
+    # print(embeddings)
