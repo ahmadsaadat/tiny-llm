@@ -16,7 +16,7 @@
 - Scores to Weights - Convert raw scores to proper attention weights using scaling.
 - Values: What We Mix - Attention weights tell us "how much" to look at each word.
 - Multi-Head Attention - Run multiple attention patterns in parallel.
-- Positional Encoding - Attention doesn't know word order by default.
+- Positional Encoding - Attention doesn't know word order by default. 
 - Building a Context-Aware Predictor - Put everything together into a working predictor that uses attention to understand context.
 
 # We Need Context: From Last Word to Weighted Sum
