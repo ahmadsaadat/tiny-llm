@@ -1,26 +1,451 @@
 <mxfile host="65bd71144e">
     <diagram id="IkUGcQMaUHA45ztfpEY_" name="Page-1">
-        <mxGraphModel dx="1352" dy="725" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="4327" dy="967" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="LLM Training" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-                    <mxGeometry x="380" y="30" width="90" height="30" as="geometry"/>
+                <mxCell id="2" value="LLM Training (&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Context - Blind)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="10" width="330" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="3" target="4">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="Training Date" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="30" y="180" width="120" height="60" as="geometry"/>
+                <mxCell id="3" value="Training Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="165" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="4" target="6">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="Tokenization" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="30" y="320" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="-2440" y="305" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="6" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="[... this is where transformer blocks go in context aware GPTs...]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="9">
+                    <mxGeometry x="-0.0895" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="6" value="Embedding Table" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="30" y="460" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="-2440" y="445" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="8" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="LM Head" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="585" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="10" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Logits" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="725" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="12" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Softmax" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="865" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="14" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Prediction" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="1005" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="16" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Loss" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="1145" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="18" target="20">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Back Propogation" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="1285" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="20" target="22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Weight Update" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="1425" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Learning" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-2440" y="1565" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="24" target="25">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&quot;the cat sat&quot;&lt;div&gt;&quot;the dog ran&quot;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2190" y="165" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="25" target="28">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Convert words into token ids.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&quot;the&quot; -&amp;gt; 4&lt;/div&gt;&lt;div&gt;&quot;cat&quot; -&amp;gt; 0&lt;/div&gt;&lt;div&gt;&quot;sat&quot; -&amp;gt; 3&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="285" width="250" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="28" target="34">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="&lt;b&gt;A random matrix: &lt;/b&gt;&lt;br&gt;&lt;i&gt;vectors that represent words&lt;/i&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;embedding_table.shape = (5, 4)&lt;br&gt;5: words&lt;br&gt;4: random numbers&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="420" width="250" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="[&lt;br&gt;&amp;nbsp;[ 0.2, -0.5,  0.1,  0.7 ],   # token 0 = cat&lt;br&gt;&amp;nbsp;[-0.1,  0.3,  0.8, -0.2 ],   # token 1 = dog&lt;br&gt;&amp;nbsp;[ 0.9, -0.4,  0.2,  0.1 ],   # token 2 = ran&lt;br&gt;&amp;nbsp;[ 0.5,  0.6, -0.3,  0.4 ],   # token 3 = sat&lt;br&gt;&amp;nbsp;[-0.7,  0.2,  0.5, -0.1 ]    # token 4 = the&lt;br&gt;]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-1870" y="420" width="220" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="{&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;cat&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;0&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;dog&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;1&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;ran&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;2&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;sat&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;3&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;the&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;4&lt;/span&gt;,&lt;br&gt;}" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-1870" y="275" width="70" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="34" target="37">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="&lt;b&gt;Another random matrix:&lt;/b&gt;&lt;br&gt;&lt;i&gt;vectors that represent the next word&lt;/i&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;lm_head.shape = (4, 5)&lt;br&gt;4: embedding numbers&lt;br&gt;5: vocabulary scores&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="560" width="250" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="[&lt;br&gt;&amp;nbsp;[ 0.1, -0.3,  0.5,  0.2, -0.1 ],&lt;br&gt;&amp;nbsp;[ 0.7,  0.4, -0.2,  0.6,  0.3 ],&lt;br&gt;&amp;nbsp;[-0.5,  0.1,  0.8, -0.4,  0.2 ],&lt;br&gt;&amp;nbsp;[ 0.3, -0.7,  0.2,  0.9,  0.5 ]&lt;br&gt;]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-1870" y="565" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="37" target="41">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Matrix multiplication:&lt;br&gt;&lt;i&gt;given that I have the word &quot;cat&quot; what word is likely next&lt;/i&gt;&lt;br&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;embedding_table[token_id] @ lm_head&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="712.5" width="250" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="[-0.17, -0.74, 0.28, 0.37, 0.18]" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-1880" y="740" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;[&quot;the cat sat&quot;,&lt;/span&gt;&lt;div style=&quot;forced-color-adjust: none; color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&quot;the dog ran&quot;]&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-1870" y="170" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="41" target="44">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Normalize the numbers:&lt;br&gt;&lt;i&gt;The numbers are very random, represent them between 0 and 1&lt;/i&gt;&lt;br&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="852.5" width="250" height="82.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="&lt;span&gt;[&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.16&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.09&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.25&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.27&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.23&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-1870" y="875" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="44" target="47">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Pick the highest number:&lt;br&gt;&lt;b&gt;&lt;i&gt;&amp;nbsp;That is index 3, meaning &quot;sat&quot; is the most likely next word&lt;/i&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="1001.88" width="250" height="66.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="&lt;span&gt;[&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.16&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.09&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.25&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;&lt;b&gt;0.27&lt;/b&gt;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.23&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-1870" y="1015" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="47" target="49">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="Compare prediction against correct answer:&lt;div&gt;&amp;nbsp;Smaller loss = better&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="1141.8700000000001" width="250" height="66.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="49" target="51">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="Compare prediction against correct answer:&lt;div&gt;&amp;nbsp;Smaller loss = better&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="1281.88" width="250" height="66.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="51" target="53">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="Adjust weights slightly" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="1421.8700000000001" width="250" height="66.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="After many updates:&lt;div&gt;&amp;nbsp;&quot;the cat&quot; -&amp;gt; &quot;sat&quot;&lt;br&gt;&amp;nbsp;&quot;the dog&quot; -&amp;gt; &quot;ran&quot;&lt;br&gt;&lt;br&gt;becomes learned behavior&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-2210" y="1554.88" width="250" height="80.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="Embedding -&amp;gt; LM Head -&amp;gt; Prediction" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-2155" y="75" width="220" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="wMKj_8VDeEKzu69UwYOL-57" target="wMKj_8VDeEKzu69UwYOL-66">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-57" value="Training Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="140" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="wMKj_8VDeEKzu69UwYOL-58" target="wMKj_8VDeEKzu69UwYOL-67">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-58" value="&quot;the cat sat&quot;&lt;div&gt;&quot;the dog ran&quot;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-845" y="140" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-59" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;[&quot;the cat sat&quot;,&lt;/span&gt;&lt;div style=&quot;forced-color-adjust: none; color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(251, 251, 251); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&quot;the dog ran&quot;]&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-535" y="150" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="wMKj_8VDeEKzu69UwYOL-66" target="wMKj_8VDeEKzu69UwYOL-70">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-66" value="Tokenization" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="285" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="wMKj_8VDeEKzu69UwYOL-67" target="wMKj_8VDeEKzu69UwYOL-71">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-67" value="Convert words into token ids.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&quot;the&quot; -&amp;gt; 4&lt;/div&gt;&lt;div&gt;&quot;cat&quot; -&amp;gt; 0&lt;/div&gt;&lt;div&gt;&quot;sat&quot; -&amp;gt; 3&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="265" width="250" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-68" value="{&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;cat&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;0&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;dog&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;1&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;ran&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;2&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;sat&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;3&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&quot;the&quot;&lt;/span&gt;: &lt;span class=&quot;ͼy&quot;&gt;4&lt;/span&gt;,&lt;br&gt;}" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="250" width="70" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="wMKj_8VDeEKzu69UwYOL-70" target="64">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-70" value="Embedding Table" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="445" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-71" value="&lt;b&gt;A random matrix: &lt;/b&gt;&lt;br&gt;&lt;i&gt;vectors that represent words&lt;/i&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;embedding_table.shape = (5, 4)&lt;br&gt;5: count unique words | &lt;b&gt;vocab_size&lt;/b&gt;&lt;br&gt;4: random number | &lt;b&gt;embedding_dimension&lt;/b&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-877.5" y="420" width="275" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="wMKj_8VDeEKzu69UwYOL-72" value="[&lt;br&gt;&amp;nbsp;[ 0.2, -0.5,  0.1,  0.7 ],   # token 0 = cat&lt;br&gt;&amp;nbsp;[-0.1,  0.3,  0.8, -0.2 ],   # token 1 = dog&lt;br&gt;&amp;nbsp;[ 0.9, -0.4,  0.2,  0.1 ],   # token 2 = ran&lt;br&gt;&amp;nbsp;[ 0.5,  0.6, -0.3,  0.4 ],   # token 3 = sat&lt;br&gt;&amp;nbsp;[-0.7,  0.2,  0.5, -0.1 ]    # token 4 = the&lt;br&gt;]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="420" width="220" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="LLM Training (&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Context Aware)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="-905" y="10" width="330" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="58" target="65">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;rotation=90;" vertex="1" parent="1">
+                    <mxGeometry x="-751.23" y="183.73000000000002" width="22.46" height="751.27" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" style="edgeStyle=none;html=1;entryX=0.1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="wMKj_8VDeEKzu69UwYOL-71" target="58">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="Transformer Block" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="-1330" y="550" width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="64" target="75">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="&lt;div&gt;Self Attention&lt;/div&gt;&lt;br&gt;Q / K / V" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1182.5" y="635" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="65" target="77">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="&lt;b&gt;3 random matrices:&lt;br&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;W_Q = (embedding_dimension, embedding_dimension) (4, 4)&lt;br&gt;W_K = (embedding_dimension, embedding_dimension)&amp;nbsp;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;(4, 4)&lt;/span&gt;&lt;br&gt;W_V = (embedding_dimension, embedding_dimension)&amp;nbsp;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;(4, 4)&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;--------------------------------&lt;/span&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;--------------------------------&lt;/span&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;--------------&lt;/span&gt;&lt;br&gt;&lt;b&gt;X&lt;/b&gt; = embedding_table[token_ids] (2, 4)&lt;br&gt;--------------------------------&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;--------------------------------&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;--------------&lt;/span&gt;&lt;br style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;Q = X @ W_Q&amp;nbsp; = &quot;What am I looking for?&quot; (2, 4)&lt;br&gt;K = X @ W_K&amp;nbsp; &amp;nbsp;= &quot;What information do I contain?&quot; (2, 4)&lt;/div&gt;&lt;div&gt;V = X @ W_V&amp;nbsp; &amp;nbsp;= &quot;What do I carry forward?&quot; (2, 4)&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-922.97" y="615" width="365.94" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;X =&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;[&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [-0.7, 0.2, 0.5, -0.1], # &quot;the&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [ 0.2, -0.5, 0.1, 0.7 ] # &quot;cat&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;]&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;@&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span class=&quot;ͼ11&quot;&gt;W_Q&lt;/span&gt; &lt;span class=&quot;ͼv&quot;&gt;=&lt;/span&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;[&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.1&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.3&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.5&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.2&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.7&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.4&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.2&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.6&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.5&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.1&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.8&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.4&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.3&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.7&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.2&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.9&lt;/span&gt;],&lt;br&gt;]&lt;br&gt;&lt;br&gt;=&amp;nbsp;&lt;br&gt;&lt;b&gt;[&lt;br&gt;&amp;nbsp; [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.20&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.40&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.01&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.21&lt;/span&gt;],  &lt;span class=&quot;ͼt&quot;&gt;# &quot;the&quot;&lt;/span&gt;&lt;br&gt;&amp;nbsp; [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.11&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.51&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.32&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.97&lt;/span&gt;],  &lt;span class=&quot;ͼt&quot;&gt;# &quot;cat&quot;&lt;/span&gt;&lt;br&gt;]&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="625" width="210" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;X =&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;[&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [-0.7, 0.2, 0.5, -0.1], # &quot;the&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [ 0.2, -0.5, 0.1, 0.7 ] # &quot;cat&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;]&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;@&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span class=&quot;ͼ11&quot;&gt;W_K&lt;/span&gt; &lt;span class=&quot;ͼv&quot;&gt;=&lt;/span&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;[&lt;br&gt;&amp;nbsp; [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.4&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.2&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.1&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.5&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.6&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.1&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.7&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.3&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.2&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.8&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.5&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.4&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.7&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.3&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.6&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.1&lt;/span&gt;],&lt;br&gt;]&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;=&amp;nbsp;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;[&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.53&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.22&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.03&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.22&lt;/span&gt;],  &lt;span class=&quot;ͼt&quot;&gt;# &quot;the&quot;&lt;/span&gt;&lt;br&gt;&amp;nbsp; [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.81&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.00&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.11&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.33&lt;/span&gt;],  &lt;span class=&quot;ͼt&quot;&gt;# &quot;cat&quot;&lt;/span&gt;&lt;br&gt;]&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-310" y="625" width="210" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;X =&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;[&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [-0.7, 0.2, 0.5, -0.1], # &quot;the&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [ 0.2, -0.5, 0.1, 0.7 ] # &quot;cat&quot;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;]&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;@&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span class=&quot;ͼ11&quot;&gt;W_V&lt;/span&gt; &lt;span class=&quot;ͼv&quot;&gt;=&lt;/span&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;[&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.5&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.2&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.4&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.1&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.3&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.7&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.6&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.2&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.8&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.1&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.3&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.5&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [ &lt;span class=&quot;ͼy&quot;&gt;0.2&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.4&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.9&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.6&lt;/span&gt;],&lt;br&gt;]&lt;/div&gt;&lt;div&gt;&lt;br&gt;=&amp;nbsp;&lt;br&gt;&lt;b&gt;[&lt;br&gt;    [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.20&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.40&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.01&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.21&lt;/span&gt;],  &lt;span class=&quot;ͼt&quot;&gt;# &quot;the&quot;&lt;/span&gt;&lt;br&gt;    [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.11&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.51&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.32&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.97&lt;/span&gt;],  &lt;span class=&quot;ͼt&quot;&gt;# &quot;cat&quot;&lt;/span&gt;&lt;br&gt;]&lt;/b&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-110" y="625" width="200" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="Q" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-440" y="585" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="K" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-230" y="585" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="V" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-50" y="585" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="75" target="80">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="&lt;div&gt;Attention Scores&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1182.5" y="995" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="77" target="81">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="How well each Query matches each Key&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;attention_score = Q @ K.T&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-877.5" y="980" width="275" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;[&lt;br&gt;&amp;nbsp; [ &lt;span style=&quot;&quot; class=&quot;ͼy&quot;&gt;0.028&lt;/span&gt;,  &lt;span style=&quot;&quot; class=&quot;ͼy&quot;&gt;0.092&lt;/span&gt;],&lt;br&gt;&amp;nbsp; [&lt;span style=&quot;&quot; class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span style=&quot;&quot; class=&quot;ͼy&quot;&gt;0.375&lt;/span&gt;,  &lt;span style=&quot;&quot; class=&quot;ͼy&quot;&gt;0.444&lt;/span&gt;],&lt;br&gt;]&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;&quot;the&quot;&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp;prefers &quot;cat&quot; over &quot;the&quot; because 0.092 &amp;gt; 0.028&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&quot;cat&quot; prefers itself because 0.444 &amp;gt; -0.375&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;p data-end=&quot;533&quot; data-start=&quot;525&quot;&gt;&lt;/p&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="980" width="300" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="80" target="84">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="&lt;div&gt;Causal Masking&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1182.5" y="1160" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="81" target="87">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-740" y="1300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="81" value="Prevent looking into the future" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-838.75" y="1157.5" width="197.5" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; KEY TOKENS&lt;br&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;|&amp;nbsp; &amp;nbsp;&quot;the&quot;&amp;nbsp; |&amp;nbsp; &quot;cat&quot;&amp;nbsp; &amp;nbsp;|&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;------------------------------&lt;/span&gt;-&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;QUERY&amp;nbsp; &amp;nbsp;&quot;the&quot;&amp;nbsp; |&amp;nbsp; 0.028&amp;nbsp; |&amp;nbsp; -inf.&amp;nbsp; &amp;nbsp; |&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; -------------------------------&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;QUERY&amp;nbsp; &amp;nbsp;&quot;cat&quot;&amp;nbsp; | -0.375&amp;nbsp; |&amp;nbsp; 0.444 |&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-525" y="1140" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="84" target="96">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="&lt;div&gt;Softmax&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1182.5" y="1295" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="87" target="97">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="Normalize attention scores&lt;br&gt;&lt;br&gt;&lt;b&gt;attention_weights&lt;/b&gt; = Turn them into probabilities between 0 -&amp;gt; 1" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-838.75" y="1290" width="197.5" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;[&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [ 1.000,&amp;nbsp; 0.000 ],&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [ 0.306,&amp;nbsp; 0.694 ]&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;]&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="1287.5" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="96" target="104">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-1035" y="1570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="96" value="&lt;div&gt;Content Mixing&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1182.5" y="1430" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" value="Combine attention weights with Value matrix&lt;br&gt;&lt;br&gt;&lt;b&gt;attention_output&lt;/b&gt; = attention_weights @ V" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-876.25" y="1413.75" width="273.75" height="92.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;[&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [-0.20,&amp;nbsp; &amp;nbsp; &amp;nbsp;0.40,&amp;nbsp; &amp;nbsp; -0.01,&amp;nbsp; &amp;nbsp; -0.21],&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp; [-0.13754, -0.23154,&amp;nbsp; 0.21902,&amp;nbsp; 0.60892]&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;]&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="1425" width="250" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="115" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="104" target="112">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="&lt;div&gt;Feed forward network&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1190" y="1565" width="135" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="116" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="113">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-740" y="1670" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="105" value="&lt;div&gt;Use expansion and contraction to find hidden patterns&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;expand = &lt;b&gt;X @ W1&lt;/b&gt;(embedding_dimension, embedding_dimension * 4) + &lt;b&gt;b1 &lt;/b&gt;(embedding_dimension * 4,)&amp;nbsp;&lt;div&gt;hidden = gelu(expand)&lt;/div&gt;&lt;div&gt;contract = hidden @ &lt;b&gt;W2&lt;/b&gt;(embedding_dimension * 4, embedding_dimension) + &lt;b&gt;b2&lt;/b&gt;&amp;nbsp;(embedding_dimension, )&lt;br&gt;&lt;br&gt;&lt;b&gt;output_embedding &lt;/b&gt;= contract&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-1017" y="1554.88" width="592" height="125" as="geometry"/>
+                </mxCell>
+                <mxCell id="108" style="edgeStyle=none;html=1;entryX=0.467;entryY=0.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="97" target="105">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="110" value="[&lt;br&gt;  [&lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.31&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.82&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.14&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.27&lt;/span&gt;],&lt;br&gt;  [ &lt;span class=&quot;ͼy&quot;&gt;0.11&lt;/span&gt;, &lt;span class=&quot;ͼv&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.52&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.91&lt;/span&gt;,  &lt;span class=&quot;ͼy&quot;&gt;0.44&lt;/span&gt;]&lt;br&gt;]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-370" y="1582.38" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="111" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;rotation=-90;" vertex="1" parent="1">
+                    <mxGeometry x="-749.37" y="1330" width="20" height="780" as="geometry"/>
+                </mxCell>
+                <mxCell id="120" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="112" target="117">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="112" value="LM Head" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="1795" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="121" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="113" target="118">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="113" value="&lt;b&gt;Another random matrix:&lt;/b&gt;&lt;br&gt;&lt;i&gt;vectors that represent the next word&lt;/i&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;lm_head.shape = (4, 5)&lt;br&gt;4: embedding numbers&lt;br&gt;5: vocabulary scores&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="1770" width="250" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="114" value="[&lt;br&gt;&amp;nbsp;[ 0.1, -0.3,  0.5,  0.2, -0.1 ],&lt;br&gt;&amp;nbsp;[ 0.7,  0.4, -0.2,  0.6,  0.3 ],&lt;br&gt;&amp;nbsp;[-0.5,  0.1,  0.8, -0.4,  0.2 ],&lt;br&gt;&amp;nbsp;[ 0.3, -0.7,  0.2,  0.9,  0.5 ]&lt;br&gt;]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="1775" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="170" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="117" target="147">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="117" value="Logits" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="1962.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="171" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="118" target="158">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="118" value="Matrix multiplication:&lt;br&gt;&lt;i&gt;given that I have the word &quot;cat&quot; what word is likely next&lt;/i&gt;&lt;br&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;embedding_table[token_id] @ lm_head&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="1950" width="250" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="119" value="[-0.17, -0.74, 0.28, 0.37, 0.18]" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="-535" y="1977.5" width="180" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="146" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="147" target="149">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="147" value="Softmax" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="2102.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="149" target="151">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="149" value="Prediction" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="2242.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="150" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="151" target="153">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="151" value="Loss" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="2382.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="152" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="153" target="155">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="153" value="Back Propogation" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="2522.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="154" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="155" target="156">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="155" value="Weight Update" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="2662.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="156" value="Learning" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="2802.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="157" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="158" target="161">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="158" value="Normalize the numbers:&lt;br&gt;&lt;i&gt;The numbers are very random, represent them between 0 and 1&lt;/i&gt;&lt;br&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="2090" width="250" height="82.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="159" value="&lt;span&gt;[&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.16&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.09&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.25&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.27&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.23&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-525" y="2112.5" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="160" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="161" target="164">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="161" value="Pick the highest number:&lt;br&gt;&lt;b&gt;&lt;i&gt;&amp;nbsp;That is index 3, meaning &quot;sat&quot; is the most likely next word&lt;/i&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="2239.38" width="250" height="66.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="162" value="&lt;span&gt;[&lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.16&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.09&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.25&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;&lt;b&gt;0.27&lt;/b&gt;&lt;/span&gt;&lt;span&gt;, &lt;/span&gt;&lt;span class=&quot;ͼy&quot;&gt;0.23&lt;/span&gt;&lt;span&gt;]&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-525" y="2252.5" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="163" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="164" target="166">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="164" value="Compare prediction against correct answer:&lt;div&gt;&amp;nbsp;Smaller loss = better&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="2379.37" width="250" height="66.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="165" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="166" target="168">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="166" value="Compare prediction against correct answer:&lt;div&gt;&amp;nbsp;Smaller loss = better&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="2519.38" width="250" height="66.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="167" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="168" target="169">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="168" value="Adjust weights slightly" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="2659.37" width="250" height="66.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="169" value="After many updates:&lt;div&gt;&amp;nbsp;&quot;the cat&quot; -&amp;gt; &quot;sat&quot;&lt;br&gt;&amp;nbsp;&quot;the dog&quot; -&amp;gt; &quot;ran&quot;&lt;br&gt;&lt;br&gt;becomes learned behavior&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="-865" y="2792.38" width="250" height="80.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="174" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="172" target="173">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="172" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;rotation=-90;" vertex="1" parent="1">
+                    <mxGeometry x="-766.25" y="2653.75" width="20" height="587.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="173" value="&lt;span class=&quot;ͼ11&quot;&gt;model = np&lt;/span&gt;&lt;span class=&quot;ͼv&quot;&gt;.&lt;/span&gt;savez(&lt;br&gt;    &lt;span class=&quot;ͼz&quot;&gt;&amp;nbsp; &quot;tiny_gpt.npz&quot;&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼ11&quot;&gt;&amp;nbsp; embedding_table&lt;/span&gt;&lt;span class=&quot;ͼv&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;ͼ11&quot;&gt;embedding_table&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼ11&quot;&gt;&amp;nbsp; W_Q&lt;/span&gt;&lt;span class=&quot;ͼv&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;ͼ11&quot;&gt;W_Q&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼ11&quot;&gt;&amp;nbsp; W_K&lt;/span&gt;&lt;span class=&quot;ͼv&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;ͼ11&quot;&gt;W_K&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼ11&quot;&gt;&amp;nbsp; W_V&lt;/span&gt;&lt;span class=&quot;ͼv&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;ͼ11&quot;&gt;W_V&lt;/span&gt;,&lt;br&gt;    &lt;span class=&quot;ͼ11&quot;&gt;&amp;nbsp; lm_head&lt;/span&gt;&lt;span class=&quot;ͼv&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;ͼ11&quot;&gt;lm_head&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;This model can now be used to start inference&lt;/div&gt;" style="whiteSpace=wrap;html=1;align=left;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="-905.94" y="2990" width="299.37" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="175" value="Output Model" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1095" y="3030" width="120" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
