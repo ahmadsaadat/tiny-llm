@@ -161,7 +161,7 @@
 - When predicting the next word, a position should only attend to itself and earlier positions - not future words it hasn't seen yet.
 - We enforce this by setting scores for future positions to -∞ before softmax. 
 - Since exp(-∞) = 0, these positions will get zero attention weight.
-![alt text](image.png)
+![alt text](doc/image-xargs.png)
 
 ## Step 3: Softmax to get Weights
 - attention_weights = softmax(masked_scores, axis=-1)

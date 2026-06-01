@@ -67,7 +67,7 @@ The architecture you build is the same pattern used by GPT-2, GPT-3, and GPT-4. 
 - After transforming the input, add the original input back to the result
 - Traditionally: output = transformation(input)
 - Residual Connection: output = transformation(input) + input
-![](2026-05-27-23-47-39.png)
+![](doc/2026-05-27-23-47-39.png)
 
 !Incomplete!
 
