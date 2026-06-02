@@ -1,160 +1,266 @@
 import random
 
-import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from tqdm import tqdm
 
-# =============================
-# 1. LOAD WIKI TRAINING DATA
-# =============================
-output_file = "tiny_llm/output_model/tiny_wiki_gpt.npz"
-input_file = "tiny_llm/input_data/wiki.train.raw"
+from tiny_llm.utils import prepare_text, read_text, tokenizer, training_sequences
 
-with open(input_file, "r", encoding="utf-8") as f:
-    raw_text = f.read()
+# 0. GPU Set up
+### Assuming using mac
+device = torch.device("mps")
+print("Using Apple GPU:", device)
 
-lines = [line.strip().lower() for line in raw_text.splitlines() if line.strip()]
+# 1. Load text
+raw_text = read_text(filename="./input_data/TinyStories-valid.txt")
 
-print("lines: ", len(lines))
-print(lines[:3])
+# 2 Prepare text
+text = prepare_text(raw_text=raw_text)
 
-# ============================
-# 2. BUILD VOCAB
-# ============================
+# 3. Tokenize text
+tokenizer = tokenizer(text=text, unknown_character="<UNK>")
 
-vocab = sorted(set(word for line in lines for word in line.split()))
-vocab_size = len(vocab)
+# 4. Build training sequences
+training_sequences = training_sequences(
+    prepared_text=text,
+    tokenizer=tokenizer,
+    sequence_length=16,
+    max_sequences=500_000,
+)
 
-word_to_id = {word: i for i, word in enumerate(vocab)}
-id_to_word = {i: word for word, i in word_to_id.items()}
-
-print("vocab_size")
-
-# ============================
-# 3. CREATE TRAINING SEQUENCES
-# ============================
-
-sequence_length = 8
-max_sequences = 50_000
-
-training_sequences = []
-
-for line in lines:
-    token_ids = [word_to_id[word] for word in line.split()]
-
-    if len(token_ids) <= sequence_length:
-        continue
-
-    for i in range(len(token_ids) - sequence_length):
-        input_ids = token_ids[i : i + sequence_length]
-        target_id = token_ids[i + sequence_length]
-
-        training_sequences.append((input_ids, target_id))
-
-        if len(training_sequences) >= max_sequences:
-            break
-
-    if len(training_sequences) >= max_sequences:
-        break
-
-print("training_sequences: ", len(training_sequences))
-
-# ============================
-# 4. Model Settings
-# ============================
-
+# 4. Weights & Tables
 embedding_dimension = 64
 attention_dimension = 64
+feed_forward_dimension = embedding_dimension * 4
+
 learning_rate = 0.001
-epochs = 5
+epochs = 20
+batch_size = 64
+
+n_heads = 4
+head_dimension = attention_dimension // n_heads
 
 
-# ============================
-# 5. Trainable Weights
-# ============================
+## tables
+embedding_table = nn.Parameter(
+    torch.randn(vocab_size, embedding_dimension, device=device) * 0.01
+)
 
-embedding_table = nn.Parameter(torch.randn(vocab_size, embedding_dimension) * 0.01)
+position_embedding_table = nn.Parameter(
+    torch.randn(sequence_length, embedding_dimension, device=device) * 0.01
+)
 
-W_Q = nn.Parameter(torch.randn(embedding_dimension, attention_dimension) * 0.01)
-W_K = nn.Parameter(torch.randn(embedding_dimension, attention_dimension) * 0.01)
-W_V = nn.Parameter(torch.randn(embedding_dimension, attention_dimension) * 0.01)
+## Attention Weights
 
-lm_head = nn.Parameter(torch.randn(attention_dimension, vocab_size))
+W_Q = nn.Parameter(
+    torch.randn(embedding_dimension, attention_dimension, device=device) * 0.01
+)
+W_K = nn.Parameter(
+    torch.randn(embedding_dimension, attention_dimension, device=device) * 0.01
+)
+W_V = nn.Parameter(
+    torch.randn(embedding_dimension, attention_dimension, device=device) * 0.01
+)
 
-parameters = [embedding_table, W_Q, W_K, W_V, lm_head]
+# Output projection after attention
+W_O = nn.Parameter(
+    torch.randn(attention_dimension, embedding_dimension, device=device) * 0.01
+)
+
+# LayerNorm weights
+norm1_gamma = nn.Parameter(torch.ones(embedding_dimension, device=device))
+norm1_beta = nn.Parameter(torch.zeros(embedding_dimension, device=device))
+
+norm2_gamma = nn.Parameter(torch.ones(embedding_dimension, device=device))
+norm2_beta = nn.Parameter(torch.zeros(embedding_dimension, device=device))
+
+
+def layer_norm(x, gamma, beta, eps=1e-5):
+    mean = x.mean(dim=-1, keepdim=True)
+    std = x.std(dim=-1, keepdim=True)
+    return gamma * ((x - mean) / (std + eps)) + beta
+
+
+# Feed Forward Network weights
+W1 = nn.Parameter(
+    torch.randn(embedding_dimension, feed_forward_dimension, device=device) * 0.01
+)
+b1 = nn.Parameter(torch.zeros(feed_forward_dimension, device=device))
+
+W2 = nn.Parameter(
+    torch.randn(feed_forward_dimension, embedding_dimension, device=device) * 0.01
+)
+b2 = nn.Parameter(torch.zeros(embedding_dimension, device=device))
+
+# LM head
+lm_head = nn.Parameter(
+    torch.randn(embedding_dimension, vocab_size, device=device) * 0.01
+)
+
+parameters = [
+    embedding_table,
+    position_embedding_table,
+    W_Q,
+    W_K,
+    W_V,
+    W_O,
+    norm1_gamma,
+    norm1_beta,
+    norm2_gamma,
+    norm2_beta,
+    W1,
+    b1,
+    W2,
+    b2,
+    lm_head,
+]
 
 optimizer = torch.optim.Adam(parameters, lr=learning_rate)
 
-# =========================
-# 6. TRAINING LOOP
-# =========================
-
+# 5. Training Loop
 for epoch in range(epochs):
     total_loss = 0
     random.shuffle(training_sequences)
 
-    for step, (input_ids, target_id) in enumerate(training_sequences):
-        input_ids = torch.tensor(input_ids)
-        target_id = torch.tensor(target_id)
+    for step in tqdm(
+        range(0, len(training_sequences), batch_size),
+        desc=f"Epoch {epoch + 1}/{epochs}",
+        unit="batch",
+    ):
+        # input ids -> target ids
+        batch = training_sequences[step : step + batch_size]
 
-        # embedding lookup
-        X = embedding_table[input_ids]
+        batch_input_ids = torch.tensor(
+            [x[0] for x in batch],
+            device=device,
+        )
+
+        batch_target_ids = torch.tensor(
+            [x[1] for x in batch],
+            device=device,
+        )
+
+        current_batch_size = batch_input_ids.shape[0]
+
+        # Lookup input_id's embeddings
+        X = embedding_table[batch_input_ids]
+
+        # Lookup position embeddings
+        positions = torch.arange(sequence_length, device=device)
+        positions = positions.unsqueeze(0)
+
+        X = X + position_embedding_table[positions]
+
+        # normalization | Layernorm 1
+        X_norm = layer_norm(
+            X,
+            norm1_gamma,
+            norm1_beta,
+        )
 
         # self-attention
-        Q = X @ W_Q
-        K = X @ W_K
-        V = X @ W_V
+        Q = X_norm @ W_Q
+        K = X_norm @ W_K
+        V = X_norm @ W_V
 
-        scores = Q @ K.T
-        scores = scores / torch.sqrt(torch.tensor(attention_dimension))
+        Q = Q.reshape(
+            current_batch_size,
+            sequence_length,
+            n_heads,
+            head_dimension,
+        ).transpose(1, 2)
 
-        # causal mask
+        K = K.reshape(
+            current_batch_size,
+            sequence_length,
+            n_heads,
+            head_dimension,
+        ).transpose(1, 2)
+
+        V = V.reshape(
+            current_batch_size,
+            sequence_length,
+            n_heads,
+            head_dimension,
+        ).transpose(1, 2)
+
+        # attention scores
+        scores = Q @ K.transpose(-2, -1)
+        scores = scores / torch.sqrt(
+            torch.tensor(
+                head_dimension,
+                device=device,
+            )
+        )
+
+        # causal masking
         mask = torch.triu(
-            torch.ones(scores.shape),
+            torch.ones(
+                sequence_length,
+                sequence_length,
+                device=device,
+            ),
             diagonal=1,
         )
 
-        scores = scores.masked_fill(mask == 1, float("-inf"))
-
-        attention_weights = F.softmax(scores, dim=-1)
-
-        context = attention_weights @ V
-
-        # predict next word from last token
-
-        last_token_vector = context[-1]
-
-        logits = last_token_vector @ lm_head
-
-        loss = F.cross_entropy(
-            logits.unsqueeze(0),
-            target_id.unsqueeze(0),
+        scores = scores.masked_fill(
+            mask == 1,
+            float("-inf"),
         )
 
+        # attention softmax
+        attention_weights = F.softmax(
+            scores,
+            dim=-1,
+        )
+
+        # context mixing
+        attention_output = attention_weights @ V
+
+        attention_output = attention_output.transpose(1, 2).reshape(
+            current_batch_size,
+            sequence_length,
+            attention_dimension,
+        )
+
+        # output projection
+        attention_output = attention_output @ W_O
+
+        # residual connection 1
+        X = X + attention_output
+
+        # layernorm 2
+        X_norm = layer_norm(
+            X,
+            norm2_gamma,
+            norm2_beta,
+        )
+
+        # feed forward network
+        hidden = X_norm @ W1 + b1
+        hidden = F.gelu(hidden)
+        ffn_output = hidden @ W2 + b2
+
+        # residual connection 2
+        X = X + ffn_output
+
+        # lm head -> logits
+        last_token_vector = X[:, -1]
+        logits = last_token_vector @ lm_head
+
+        # loss
+
+        loss = F.cross_entropy(
+            logits,
+            batch_target_ids,
+        )
+
+        # backprop + weight update
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-
         total_loss += loss.item()
 
-        if step % 5000 == 0:
-            print("epoch: ", epoch, " step: ", step, " loss: ", loss.item())
-
-    avg_loss = total_loss / len(training_sequences)
-    print("EPOCH Done: ", epoch, " avg loss: ", avg_loss)
-
-np.savez(
-    output_file,
-    embedding_table=embedding_table.detach().cpu().numpy(),
-    W_Q=W_Q.detach().cpu().numpy(),
-    W_K=W_K.detach().cpu().numpy(),
-    W_V=W_V.detach().cpu().numpy(),
-    lm_head=lm_head.detach().cpu().numpy(),
-    vocab=np.array(vocab),
-    sequence_length=sequence_length,
-    embedding_dimension=embedding_dimension,
-    attention_dimension=attention_dimension,
-)
-
-print(f"Saved model to {output_file}")
+    avg_loss = total_loss / (len(training_sequences) / batch_size)
+    print(f"\nEPOCH {epoch + 1}/{epochs} DONE | avg loss = {avg_loss:.4f}")
