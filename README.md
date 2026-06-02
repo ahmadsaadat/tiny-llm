@@ -1,4 +1,4 @@
-# TinyLLM
+# tiny-llm
 
 ## Parts
 1. [Module 1: From Text to Numbers - How LLMs convert text into numbers.](module-1.md)
