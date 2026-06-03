@@ -63,3 +63,6 @@ class TestTrainingSequences(unittest.TestCase):
         assert isinstance(sequences[0], tuple)
         assert isinstance(sequences[0][0], list)
         assert isinstance(sequences[0][1], int)
+
+
+# class TestTables
