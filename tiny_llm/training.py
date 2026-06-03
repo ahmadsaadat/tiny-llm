@@ -120,7 +120,7 @@ for epoch in range(epochs):
         desc=f"Epoch {epoch + 1}/{epochs}",
         unit="batch",
     ):
-        # 11.1: map input ids to target ids
+        # 11.1: batch of input ids and target id
         batch = get_batch(
             training_sequences=training_sequences,
             step=step,
