@@ -150,7 +150,7 @@ for epoch in range(epochs):
 
         # 11.7 normalize
         Z_norm = layer_norm(
-            X,
+            Z,
             norm1_gamma,
             norm1_beta,
         )
@@ -246,7 +246,7 @@ for epoch in range(epochs):
         Z = Z + ffn_output
 
         # lm head -> logits
-        last_token_vector = X[:, -1]
+        last_token_vector = Z[:, -1]
         logits = last_token_vector @ lm_head
 
         # loss

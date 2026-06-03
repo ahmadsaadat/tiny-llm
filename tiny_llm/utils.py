@@ -189,3 +189,7 @@ def get_batch_targets(batch: list[tuple], device: device):
         [x[1] for x in batch],
         device=device,
     )
+
+
+def get_embeddings():
+    pass
