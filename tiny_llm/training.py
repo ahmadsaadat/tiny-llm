@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
 
-from tiny_llm.utils import prepare_text, read_text, tokenizer, training_sequences
+from tiny_llm.utils import find_tokens, prepare_text, read_text, training_sequences
 
 # 0. GPU Set up
 ### Assuming using mac
@@ -18,18 +18,18 @@ raw_text = read_text(filename="./input_data/TinyStories-valid.txt")
 # 2 Prepare text
 text = prepare_text(raw_text=raw_text)
 
-# 3. Tokenize text
-tokenizer = tokenizer(text=text, unknown_character="<UNK>")
+# 3. Find Tokens
+tokens = find_tokens(text=text)
 
 # 4. Build training sequences
 training_sequences = training_sequences(
-    prepared_text=text,
-    tokenizer=tokenizer,
+    text=text,
+    tokenizer=tokens,
     sequence_length=16,
     max_sequences=500_000,
 )
 
-# 4. Weights & Tables
+# 5. Weights & Tables
 embedding_dimension = 64
 attention_dimension = 64
 feed_forward_dimension = embedding_dimension * 4

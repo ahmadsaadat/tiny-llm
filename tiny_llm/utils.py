@@ -25,7 +25,11 @@ def prepare_text(raw_text: str) -> list[str]:
     return [f"{line} {END_TOKEN}" for line in lines]
 
 
-def tokenizer(text: list[str], unknown_character: str):
+def find_tokens(
+    text: list[str],
+    unknown_character: str = "<UNK>",
+    filename: str = "tiny_llm/output_model/tokenizer.json",
+) -> Tokenizer:
     tokenizer = Tokenizer(BPE(unk_token=unknown_character))
 
     tokenizer.pre_tokenizer = Whitespace()
@@ -33,27 +37,27 @@ def tokenizer(text: list[str], unknown_character: str):
     trainer = BpeTrainer(
         vocab_size=20000,
         special_tokens=[
-            "<UNK>",
+            unknown_character,
             "<|endoftext|>",
         ],
     )
 
     tokenizer.train_from_iterator(
-        prepared_text,
+        text,
         trainer,
     )
 
-    tokenizer.save("./output_model/tokenizer.json")
+    tokenizer.save(filename)
 
     return tokenizer
 
 
 def training_sequences(
-    prepared_text: list[str], tokenizer, sequence_length: int, max_sequences: int
+    text: list[str], tokenizer, sequence_length: int, max_sequences: int
 ) -> list[tuple]:
     training_sequences = []
 
-    for line in prepared_text:
+    for line in text:
         token_ids = tokenizer.encode(line).ids
 
         if len(token_ids) <= sequence_length:
@@ -70,9 +74,5 @@ def training_sequences(
 
         if len(training_sequences) >= max_sequences:
             break
-
-        print("training_sequences: ", training_sequences[0])
-        print("input: ", tokenizer.decode(training_sequences[0][0]))
-        print("output: ", tokenizer.decode([training_sequences[0][1]]))
 
     return training_sequences
