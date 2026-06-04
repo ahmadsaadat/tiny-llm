@@ -1,6 +1,6 @@
 from tiny_llm.modules.a_data import Data
 from tiny_llm.modules.b_tables import Tables
-from tiny_llm.modules.c_training import training_loop
+from tiny_llm.modules.c_trainer import training_loop
 from tiny_llm.modules.utils import create_optimizer
 
 if __name__ == "__main__":
@@ -14,15 +14,17 @@ if __name__ == "__main__":
 
     # 2. create your weight tables
     tables = Tables(
-        size_vocab=data.tokenizer.get_vocab_size(),
-        size_training_sequences=len(data.training_sequences),
+        vocab_size=data.tokenizer.get_vocab_size(),
+        sequence_length=16,
         dimension_attention=64,
         dimension_embedding=64,
     )
 
+    trainer = Trainer()
+
     # 3. create your optimizer
     optimizer = create_optimizer(
-        parameters=list(weights.values()),
+        parameters=tables.parameters,
         learning_rate=0.001,
     )
 

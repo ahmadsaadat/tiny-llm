@@ -2,10 +2,21 @@ import random
 
 import torch
 import torch.nn.functional as F
+from torch.optim.adam import Adam
 from tqdm import tqdm
 
 from tiny_llm.modules.d_forward_pass import forward_pass
 from tiny_llm.modules.utils import get_batch, get_batch_inputs, get_batch_targets
+
+
+class Trainer:
+    optimizer: Adam  # Adaptive Moment Estimation
+
+    def __init__(self, parameters: list, learning_rate: float = 0.001):
+        self.optimizer = torch.optim.Adam(
+            params=parameters,
+            lr=learning_rate,
+        )
 
 
 def training_loop(
