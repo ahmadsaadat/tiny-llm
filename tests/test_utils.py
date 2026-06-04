@@ -3,7 +3,7 @@ import unittest
 import torch
 from tokenizers import Tokenizer
 
-from tiny_llm.utils import (
+from tiny_llm.modules.utils import (
     find_tokens,
     get_batch,
     get_batch_inputs,
