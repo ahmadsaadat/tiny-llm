@@ -72,6 +72,6 @@ class Trainer:
                 loss.backward()
                 self.optimizer.step()
                 total_loss += loss.item()
-            torch.save({"tables": self.tables}, "tiny_llm/io/tiny_gpt.pt")
+            torch.save({"tables": self.tables}, "tiny_llm/io/tiny_stories_gpt.pt")
             num_batches = len(range(0, len(self.training_sequences), batch_size))
             print("avg_loss:", total_loss / num_batches)
