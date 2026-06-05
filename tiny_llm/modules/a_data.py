@@ -65,7 +65,7 @@ class Data:
         return tokenizer
 
     @property
-    def training_sequences(self):
+    def training_sequences(self) -> list[int]:
         training_sequences = []
         tokenizer = self.tokenizer
 

@@ -1,9 +1,14 @@
 from tiny_llm.modules.a_data import Data
-from tiny_llm.modules.b_tables import Tables
-from tiny_llm.modules.c_trainer import training_loop
-from tiny_llm.modules.utils import create_optimizer
+from tiny_llm.modules.b_tables import Table
+from tiny_llm.modules.c_trainer import Trainer
 
 if __name__ == "__main__":
+    sequence_length = 16
+    sequence_size_max = 20_000
+    dimension_attention = 64
+    dimension_embedding = 64
+    number_of_weight_tables = 2
+
     # 1. load data, clean, tokenize and create training sequences
     data = Data(
         filename_input_data="tiny_llm/io/tiny_stories.txt",
@@ -13,29 +18,20 @@ if __name__ == "__main__":
     )
 
     # 2. create your weight tables
-    tables = Tables(
-        vocab_size=data.tokenizer.get_vocab_size(),
-        sequence_length=16,
+    tables = [
+        Table(
+            vocab_size=data.tokenizer.get_vocab_size(),
+            sequence_length=16,
+            dimension_attention=64,
+            dimension_embedding=64,
+        )
+        for i in range(number_of_weight_tables)
+    ]
+
+    # 3. train
+    trainer = Trainer(
+        tables=tables,
         dimension_attention=64,
-        dimension_embedding=64,
-    )
-
-    trainer = Trainer()
-
-    # 3. create your optimizer
-    optimizer = create_optimizer(
-        parameters=tables.parameters,
-        learning_rate=0.001,
-    )
-
-    # 4. training loop
-    training_loop(
-        sequences=sequences,
-        weights=weights,
-        optimizer=optimizer,
+        training_sequences=data.training_sequences,
         sequence_length=16,
-        attention_dimension=64,
-        n_heads=4,
-        epochs=6,
-        batch_size=64,
-    )
+    ).train()
