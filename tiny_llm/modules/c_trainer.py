@@ -3,6 +3,7 @@ import random
 import torch
 import torch.nn.functional as F
 from torch.optim.adam import Adam
+from tqdm import tqdm
 
 from tiny_llm.modules.b_tables import Table
 from tiny_llm.modules.d_transformer_block import TransformerBlock
@@ -38,12 +39,13 @@ class Trainer:
 
     def train(
         self,
-        training_rounds: int = 5,
+        training_rounds: int = 10,
         batch_size: int = 64,
     ):
         for round in range(training_rounds):
+            total_loss = 0
             random.shuffle(self.training_sequences)
-            for index in range(0, len(self.training_sequences), batch_size):
+            for index in tqdm(range(0, len(self.training_sequences), batch_size)):
                 # get batch of inputs and targets
                 batch = self.training_sequences[index : index + batch_size]
                 inputs = torch.tensor([x[0] for x in batch], device=self.device)
@@ -53,9 +55,7 @@ class Trainer:
                 ## get Z = embeddings + positions
                 input_tables = self.tables[0]
                 X = input_tables.table_embedding[inputs]
-                # 0, 1, 2, 3 ... sequence_length
-                positions = [i for i in range(self.sequence_length)]
-                Z = X + input_tables.table_position[positions]
+                Z = X + input_tables.table_position
 
                 for table in self.tables:
                     ## transformer block
@@ -71,3 +71,7 @@ class Trainer:
                 self.optimizer.zero_grad()
                 loss.backward()
                 self.optimizer.step()
+                total_loss += loss.item()
+            torch.save({"tables": self.tables}, "tiny_llm/io/tiny_gpt.pt")
+            num_batches = len(range(0, len(self.training_sequences), batch_size))
+            print("avg_loss:", total_loss / num_batches)
