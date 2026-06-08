@@ -64,7 +64,8 @@ In this project we will learn how to create a large language model
         5. Learning Rate
         6. Batch Size
         7. Sequence Length
-- As an professional model trainer, what should I look for?
+
+- As a professional model trainer, what should I look for?
     - Average Loss
     - Inference Quality
     - Training speed
