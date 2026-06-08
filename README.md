@@ -40,7 +40,21 @@ In this project we will learn how to create a large language model
 4. Transformer Block: Pass the embeddings through the training transformer block
 5. Repeat: Keep predicting until the model outputs ```<END>```
 
-## Questions:
-1. How does one know what is the best params to create a really good model?
-    1. is it trial and error
-    2. what do the random params do to the final language model?
+## Q/A:
+- How does one know what is the best params to create a really good model?
+    - It is a combination of:
+        1. Trial and Error (aka hyperparameter tuning)
+        2. Research papers
+    - What are some common hyperparameter I could tweak?
+        1. Number of transformer blocks
+        2. Embedding Dimension
+        3. Attention Dimension
+        4. Number of LM heads
+        5. Learning Rate
+        6. Batch Size
+        7. Sequence Length
+- As an professional model trainer, what should I look for?
+    - Average Loss
+    - Inference Quality
+    - Training speed
+    - Memory Usage
