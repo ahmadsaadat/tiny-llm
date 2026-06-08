@@ -7,6 +7,7 @@ from tiny_llm.modules.b_tables import Table
 from tiny_llm.modules.c_trainer import Trainer
 from tiny_llm.modules.d_transformer_block import TransformerBlock
 
+# training
 sequence_length = 16
 sequence_size_max = 200_000
 dimension_attention = 128
@@ -18,12 +19,16 @@ device = torch.device("mps")
 temperature = 0.8
 max_safety_tokens = 200  # only prevents infinite loop
 
+# shared
+training_data = "tiny_llm/io/tiny_stories.txt"
+tokens_data = "tiny_llm/io/tiny_stories_tokens.json"
+
 
 def train():
     # 1. load data, clean, tokenize and create training sequences
     data = Data(
-        filename_input_data="tiny_llm/io/tiny_stories.txt",
-        filename_output_data="tiny_llm/io/tiny_stories_tokenizer.json",
+        filename_input_data=training_data,
+        filename_output_data=tokens_data,
         sequence_length=sequence_length,
         sequence_size_max=sequence_size_max,
     )

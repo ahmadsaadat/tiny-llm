@@ -66,6 +66,7 @@ class Trainer:
                     ).forward(Z)
 
                 last_token_vector = Z[:, -1]
+                # lm head
                 logits = last_token_vector @ input_tables.table_lm_head
                 loss = F.cross_entropy(logits, target)
                 self.optimizer.zero_grad()
