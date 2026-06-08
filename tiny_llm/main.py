@@ -102,12 +102,12 @@ def infer(user_input: str):
 
 if __name__ == "__main__":
     user_input = input(
-        "Press Enter to train, or type a message and press Enter to chat: "
+        "Type a message and press Enter to chat: \n e.g. 'today is a great', \nOtherwise, type 'train me baby' in order to train your own model\n>>> ",
     )
 
     if user_input.strip():
         while True:
             print(infer(user_input))
-            user_input = input()
-    else:
+            user_input = input(">>> ")
+    elif user_input.strip() == "train me baby":
         train()

@@ -2,7 +2,14 @@
 
 In this project we will learn how to create a large language model
 
-# Intro
+## Contents
+- [Intro](#intro)
+- [Training](#training)
+- [Inference](#inference)
+- [Installation and Running](#installation-and-running)
+- [Q/A](#qa)
+
+## Intro
 - An LLM is comprised of 2 parts:
     1. Training:
         - This part creates a model.
@@ -39,6 +46,10 @@ In this project we will learn how to create a large language model
 3. Tables: Convert the tokens into embeddings using the model
 4. Transformer Block: Pass the embeddings through the training transformer block
 5. Repeat: Keep predicting until the model outputs ```<END>```
+
+## Installation and Running:
+    1. ```poetry install```
+    2. ```poetry run python tiny_llm/main.py```
 
 ## Q/A:
 - How does one know what is the best params to create a really good model?
