@@ -39,7 +39,7 @@ class Trainer:
 
     def train(
         self,
-        training_rounds: int = 10,
+        training_rounds: int = 30,
         batch_size: int = 64,
     ):
         for round in range(training_rounds):
