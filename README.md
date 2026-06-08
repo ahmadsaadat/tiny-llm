@@ -12,13 +12,35 @@ In this project we will learn how to create a large language model
 
 ## Training
 1. Data: You have to gather lots of data and clean them
-2. Tokenization: You have to represent your data as numbers/tokens (numbers are easier to do math on)
-3. Tables: You then have to make a bunch of tables/ matrices that will learn patterns (these tables are like optimized galton board, remember normal distribution? They will guide the numbers to their destiny)
-    - Embedding Table: These are optimized random numbers that represent token definition
-    - Embedding Position Table: These are optimized random numbers that represent the token position (relative to other tokens in a sequence)
-    - LM Head Table: These are optimized random numbers that make the next word prediction (based on the last vector in a sequence)
+2. Tokenization: You have to represent your data as numbers ( aka tokens, cuz they're easier to do math on)
+3. Tables: You then have to make a bunch of tables/ matrices that will learn patterns (these tables are like an optimized galton board, remember normal distribution? They will guide the numbers to their destiny)
+    - Embedding Table: These are optimized random numbers that represent a token's meaning.
+    - Embedding Position Table: These are optimized random numbers that represent the token's position (relative to other tokens in a sequence).
+    - LM Head Table: These are optimized random numbers that make the next word prediction.
 4. Transformer Blocks: You will pass the token embeddings through this block so that the model can build context
-    - Layer Norm Table: Stabilizes the numbers.
-    - Feed Forward Table: Helps transform and refine the token representation.
-    - Attention Table: Helps token decide which previous tokens are important to remember.
+    - Layer Norm Table (beta/gamma): Stabilizes the numbers, such that they are between mean=0, std=1.
+    ```
+    layer_norm = gamma * ((x - mean) / (std + eps)) + beta
+    ```
+    - Attention Table (Q, K, V, O): Helps decide which tokens to pay more attention to.
+    - Feed Forward Table (W1, W2, b1, b2): Helps decide what to do with those numbers.
+    - Residual Connection: Helps retain certain numbers.
+5. Loss: Measures how wrong the prediction was versus the actual sequence.
+6. Optimization: Adjusts all table values so that next prediction is better.
+7. Repeat: Keep repeating with different sequence until the avg loss gets closer to 0.
+    ```
+    avg_loss = total_loss / num_batches
+    ```
+8. Output: Output a model with all the optimized tables.
 
+## Inference:
+1. Load: Get the model and tokenizer outputted from training
+2. Tokenization: Tokenize the user input
+3. Tables: Convert the tokens into embeddings using the model
+4. Transformer Block: Pass the embeddings through the training transformer block
+5. Repeat: Keep predicting until the model outputs ```<END>```
+
+## Questions:
+1. How does one know what is the best params to create a really good model?
+    1. is it trial and error
+    2. what do the random params do to the final language model?
